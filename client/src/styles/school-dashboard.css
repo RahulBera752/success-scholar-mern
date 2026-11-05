@@ -1,0 +1,804 @@
+/* Professional School Account Dashboard */
+
+.school-dashboard {
+  --school-navy: #09275f;
+  --school-blue: #1f58aa;
+  --school-text: #182743;
+  --school-muted: #69768d;
+  min-height: 100vh;
+  color: var(--school-text);
+  background: #f5f7fc;
+  font-family: inherit;
+}
+
+.school-dashboard *,
+.school-dashboard *::before,
+.school-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.school-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  min-height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px clamp(20px, 6vw, 90px);
+  border-bottom: 1px solid #e8edf5;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 3px 18px rgba(20, 39, 75, 0.045);
+}
+
+.school-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--school-navy);
+  text-decoration: none;
+}
+
+.school-brand-mark {
+  display: grid;
+  width: 47px;
+  height: 47px;
+  flex: 0 0 47px;
+  place-items: center;
+  border: 2px solid #33845b;
+  border-radius: 50%;
+  color: #0879bc;
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.school-brand-copy strong,
+.school-brand-copy small {
+  display: block;
+}
+
+.school-brand-copy strong {
+  font-size: 16px;
+  letter-spacing: 0.035em;
+}
+
+.school-brand-copy small {
+  margin-top: 4px;
+  color: #7c879a;
+  font-size: 12px;
+}
+
+.school-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.8vw, 34px);
+}
+
+.school-nav a {
+  color: #142b56;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.school-nav a:hover {
+  color: #3775d0;
+}
+
+.school-nav button {
+  padding: 10px 19px;
+  border: 1px solid #17376f;
+  border-radius: 999px;
+  background: #fff;
+  color: #17376f;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.school-nav button:hover {
+  background: var(--school-navy);
+  color: #fff;
+}
+
+.school-main {
+  width: min(1240px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 34px 0 64px;
+}
+
+.school-hero {
+  position: relative;
+  display: flex;
+  min-height: 390px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  overflow: hidden;
+  padding: clamp(32px, 5vw, 64px);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(104, 159, 255, 0.23), transparent 27%),
+    linear-gradient(115deg, #08245b 0%, #103b83 57%, #1c5aa8 100%);
+  box-shadow: 0 18px 42px rgba(8, 36, 93, 0.16);
+  color: #fff;
+}
+
+.school-hero::before {
+  position: absolute;
+  right: 15%;
+  bottom: -250px;
+  width: 430px;
+  height: 430px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  content: "";
+}
+
+.school-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 670px;
+}
+
+.school-kicker {
+  display: inline-block;
+  color: #bfd6ff;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+}
+
+.school-hero h1 {
+  max-width: 650px;
+  margin: 16px 0 17px;
+  color: #fff;
+  font-size: clamp(36px, 4.8vw, 57px);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.school-hero-copy > p {
+  max-width: 610px;
+  margin: 0;
+  color: #e1ebff;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.school-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-top: 27px;
+}
+
+.school-primary-button {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 13px 19px;
+  border: 1px solid #fff;
+  border-radius: 9px;
+  background: #fff;
+  color: #0b2d69;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.school-primary-button:hover {
+  transform: translateY(-2px);
+  background: #edf3ff;
+}
+
+.school-secondary-link {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.school-secondary-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.school-trust-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  color: #d5e4ff;
+  font-size: 12px;
+}
+
+.school-online-dot,
+.school-partner-badge > span {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #51dda0;
+}
+
+.school-hero-visual {
+  position: relative;
+  display: grid;
+  width: 285px;
+  height: 285px;
+  flex: 0 0 285px;
+  place-items: center;
+}
+
+.school-visual-orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.19);
+  border-radius: 50%;
+}
+
+.school-orbit-one {
+  width: 270px;
+  height: 270px;
+}
+
+.school-orbit-two {
+  width: 220px;
+  height: 220px;
+  border-style: dashed;
+}
+
+.school-visual-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 176px;
+  min-height: 204px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.19), rgba(255, 255, 255, 0.07));
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  transform: rotate(3deg);
+}
+
+.school-visual-cap {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  margin-bottom: 13px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #d9e7ff;
+  font-size: 24px;
+}
+
+.school-visual-card strong {
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.school-visual-card .school-visual-accent {
+  color: #a9f1d0;
+}
+
+.school-visual-card > span {
+  margin-top: 10px;
+  color: #e1ebff;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.school-floating-dot {
+  position: absolute;
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: #6de0b0;
+}
+
+.school-dot-one {
+  top: 35px;
+  right: 37px;
+}
+
+.school-dot-two {
+  bottom: 36px;
+  left: 25px;
+  background: #f9ce75;
+}
+
+.school-account-card {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  margin-top: 26px;
+  padding: 23px 26px;
+  border: 1px solid #e7edf6;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(20, 39, 75, 0.035);
+}
+
+.school-account-avatar {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf3ff;
+  color: #2858a5;
+}
+
+.school-account-avatar svg {
+  width: 29px;
+  height: 29px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.school-account-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.school-account-details > span {
+  color: #7a8598;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.school-account-details h2 {
+  margin: 5px 0;
+  color: #102d64;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.school-account-details p {
+  margin: 0;
+  color: #69768d;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.school-partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border-radius: 999px;
+  background: #eaf8f0;
+  color: #26734d;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.school-opportunities {
+  padding-top: 48px;
+  scroll-margin-top: 24px;
+}
+
+.school-section-heading {
+  margin-bottom: 23px;
+}
+
+.school-kicker-dark {
+  color: #315ea9;
+}
+
+.school-section-heading h2 {
+  margin: 9px 0;
+  color: #102b60;
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 820;
+  letter-spacing: -0.035em;
+}
+
+.school-section-heading p {
+  max-width: 720px;
+  margin: 0;
+  color: #6b778d;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.school-opportunity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.school-opportunity-card {
+  display: flex;
+  min-width: 0;
+  min-height: 285px;
+  flex-direction: column;
+  padding: 25px;
+  border: 1px solid #e6ebf4;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(20, 39, 75, 0.035);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.school-opportunity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 32px rgba(20, 39, 75, 0.09);
+}
+
+.school-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+
+.school-feature-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 14px;
+  background: #edf3ff;
+  color: #2858a5;
+}
+
+.school-feature-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.school-card-number {
+  color: #a1aabd;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+}
+
+.school-theme-violet .school-feature-icon {
+  background: #f2edff;
+  color: #7852c8;
+}
+
+.school-theme-green .school-feature-icon {
+  background: #eaf8f0;
+  color: #218451;
+}
+
+.school-opportunity-card h3 {
+  margin: 0 0 10px;
+  color: #17294b;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.school-opportunity-card > p {
+  flex: 1;
+  margin: 0 0 22px;
+  color: #6a768b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.school-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  color: #1c4e9d;
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.school-card-link span {
+  transition: transform 160ms ease;
+}
+
+.school-card-link:hover span {
+  transform: translateX(4px);
+}
+
+.school-contact-banner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 30px;
+  padding: 30px;
+  border: 1px solid #dce7fb;
+  border-radius: 18px;
+  background: linear-gradient(110deg, #eaf1ff, #f5f8ff);
+}
+
+.school-contact-symbol {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  place-items: center;
+  border-radius: 15px;
+  background: #fff;
+  color: #1d4e9e;
+  font-size: 28px;
+  box-shadow: 0 5px 15px rgba(20, 39, 75, 0.06);
+}
+
+.school-contact-copy {
+  flex: 1;
+}
+
+.school-contact-copy > span {
+  color: #315ea9;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.school-contact-copy h2 {
+  margin: 7px 0;
+  color: #102b60;
+  font-size: clamp(20px, 2.5vw, 27px);
+  line-height: 1.35;
+}
+
+.school-contact-copy p {
+  margin: 0;
+  color: #65738b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.school-banner-button {
+  display: inline-flex;
+  min-height: 47px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 17px;
+  border-radius: 9px;
+  background: #09275f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.school-banner-button:hover {
+  background: #1b4e9a;
+}
+
+.school-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px clamp(20px, 6vw, 90px);
+  border-top: 1px solid #e5eaf3;
+  background: #fff;
+}
+
+.school-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.school-footer-brand .school-brand-mark {
+  width: 38px;
+  height: 38px;
+  flex-basis: 38px;
+  font-size: 21px;
+}
+
+.school-footer-brand strong {
+  color: #102d64;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.school-footer-brand p {
+  margin: 4px 0 0;
+  color: #758197;
+  font-size: 11px;
+}
+
+.school-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 19px;
+}
+
+.school-footer-links a {
+  color: #65728a;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.school-footer-links a:hover {
+  color: #1c4e9d;
+}
+
+.school-footer-copyright {
+  margin: 0;
+  color: #7b8597;
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .school-hero-visual {
+    width: 220px;
+    height: 220px;
+    flex-basis: 220px;
+  }
+
+  .school-orbit-one {
+    width: 215px;
+    height: 215px;
+  }
+
+  .school-orbit-two {
+    width: 175px;
+    height: 175px;
+  }
+
+  .school-opportunity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .school-opportunity-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .school-footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 650px) {
+  .school-header {
+    min-height: 72px;
+    padding: 12px 15px;
+  }
+
+  .school-brand-mark {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+    font-size: 22px;
+  }
+
+  .school-brand-copy strong {
+    font-size: 12px;
+  }
+
+  .school-brand-copy small {
+    font-size: 10px;
+  }
+
+  .school-nav {
+    gap: 10px;
+  }
+
+  .school-nav a {
+    display: none;
+  }
+
+  .school-nav a:last-of-type {
+    display: inline;
+  }
+
+  .school-nav button {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .school-main {
+    width: calc(100% - 28px);
+    padding: 20px 0 36px;
+  }
+
+  .school-hero {
+    min-height: 0;
+    padding: 31px 23px;
+    border-radius: 17px;
+  }
+
+  .school-hero h1 {
+    font-size: clamp(34px, 10vw, 43px);
+  }
+
+  .school-hero-copy > p {
+    font-size: 13px;
+  }
+
+  .school-hero-visual {
+    display: none;
+  }
+
+  .school-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .school-account-card {
+    flex-wrap: wrap;
+    gap: 13px;
+    padding: 19px;
+  }
+
+  .school-account-details h2 {
+    font-size: 17px;
+  }
+
+  .school-partner-badge {
+    margin-left: 71px;
+  }
+
+  .school-opportunities {
+    padding-top: 36px;
+  }
+
+  .school-opportunity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .school-opportunity-card:last-child {
+    grid-column: auto;
+  }
+
+  .school-opportunity-card {
+    min-height: 250px;
+    padding: 23px;
+  }
+
+  .school-contact-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 23px;
+  }
+
+  .school-banner-button {
+    width: 100%;
+  }
+
+  .school-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 24px 18px;
+  }
+
+  .school-footer-links {
+    gap: 14px;
+  }
+}

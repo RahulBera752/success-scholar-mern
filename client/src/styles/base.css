@@ -1,0 +1,71 @@
+:root {
+  --navy: #000066;
+  --navy-2: #0a0a8a;
+  --blue: #1b3bd6;
+  --sky: #dff1ff;
+  --gold: #f5c542;
+  --text: #333a4a;
+  --muted: #5b6475;
+  --line: #e5e8ef;
+  --bg-tint: #f4f7fb;
+  --shadow: 0 4px 18px rgba(0, 0, 40, 0.12);
+  --radius: 10px;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--text); background: #fff; line-height: 1.6; }
+img, svg { max-width: 100%; }
+a { color: var(--navy-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; margin: 0 0 .6rem; }
+ul { padding: 0; margin: 0; list-style: none; }
+.container { width: min(1200px, 92%); margin: 0 auto; }
+.narrow { width: min(820px, 92%); margin: 0 auto; }
+.center { text-align: center; margin-top: 1.5rem; }
+.center-note { text-align: center; padding: 4rem 1rem; }
+.error-text { color: #b3261e; }
+.page-top { min-height: 60vh; padding-top: 1rem; }
+
+.btn { display: inline-block; border: 2px solid var(--navy); background: var(--navy); color: #fff; padding: .65rem 1.5rem; border-radius: 999px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform .15s, background .15s; text-align: center; font-family: inherit; }
+.btn:hover { background: var(--navy-2); text-decoration: none; transform: translateY(-1px); }
+.btn:disabled { opacity: .6; cursor: wait; }
+.btn-outline { background: transparent; color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: #fff; }
+.btn-light { background: #fff; color: var(--navy); border-color: #fff; }
+.btn-light:hover { background: var(--sky); }
+.btn-block { width: 100%; border-radius: 6px; }
+.btn-sm { padding: .35rem .9rem; font-size: .85rem; }
+.link-btn { background: none; border: 0; color: var(--blue); font-weight: 600; cursor: pointer; padding: 0; font-family: inherit; }
+
+.section { padding: 3.5rem 0; }
+.tinted { background: var(--bg-tint); }
+.section-title { text-align: center; margin-bottom: 2rem; padding: 0 1rem; }
+.section-title h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 800; margin-bottom: .5rem; }
+.section-title p { max-width: 720px; margin: 0 auto; color: var(--muted); }
+
+.card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; }
+
+.form { display: flex; flex-direction: column; gap: .9rem; }
+.form label { display: flex; flex-direction: column; gap: .3rem; font-weight: 600; font-size: .92rem; color: var(--navy); }
+input, select, textarea { font: inherit; padding: .6rem .8rem; border: 1px solid #c8cfdc; border-radius: 8px; background: #fff; color: var(--text); width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.alert { padding: .65rem .9rem; border-radius: 8px; font-size: .92rem; }
+.alert-error { background: #fdecea; color: #8c1d18; }
+.alert-success { background: #e6f4ea; color: #1e6b34; }
+.hint { font-size: .9rem; color: var(--muted); margin: 0; }
+.demo-hint { background: var(--bg-tint); padding: .5rem .7rem; border-radius: 8px; }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 30, .55); display: grid; place-items: center; z-index: 100; padding: 1rem; overflow-y: auto; }
+.modal { position: relative; background: #fff; border-radius: 12px; padding: 2rem; width: min(520px, 100%); max-height: 92vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+.modal-close { position: absolute; top: .6rem; right: .6rem; background: none; border: 0; cursor: pointer; color: var(--navy); }
+.check-list li { display: flex; gap: .5rem; align-items: flex-start; margin: .5rem 0; }
+.check-list svg { color: #1e8e3e; flex: none; margin-top: 3px; }
+.course-modal .btn { margin-top: 1rem; }
+.contact-lines { display: flex; flex-direction: column; gap: .2rem; font-size: .92rem; margin: 0; }
+
+.table-scroll { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; background: #fff; font-size: .92rem; }
+.table th { background: var(--navy); color: #fff; text-align: left; padding: .7rem .8rem; text-transform: uppercase; font-size: .78rem; letter-spacing: .04em; }
+.table td { padding: .7rem .8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table .empty { text-align: center; color: var(--muted); padding: 1.5rem; }

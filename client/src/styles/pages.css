@@ -1,0 +1,122 @@
+.auth-wrap { min-height: 70vh; display: grid; place-items: center; padding: 3rem 1rem; background: linear-gradient(120deg, #eaf6ff, #fff 60%, #e5ecff); }
+.auth-card { width: min(460px, 100%); }
+.prose h3 { margin-top: 1.5rem; }
+.prose { padding-bottom: 3rem; }
+
+.careers-top { background: linear-gradient(90deg, #0a2a6b, #123a8f); padding: 1rem 4%; }
+.careers-top a { color: #fff; font-weight: 700; }
+.careers-hero { background: radial-gradient(ellipse at 20% 40%, #cfe6fb 0, transparent 55%), radial-gradient(ellipse at 60% 70%, #d9ecfb 0, transparent 50%), #f3f9ff; padding: 3rem 0; }
+.careers-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: center; }
+.careers-brand { display: flex; align-items: center; gap: 1rem; }
+.careers-brand h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin: 0; }
+.careers-hero h2 { font-weight: 400; font-size: clamp(1.4rem, 3vw, 2rem); margin: 2rem 0 1.2rem; color: #1f2a55; }
+.job-search { display: flex; gap: .8rem; flex-wrap: wrap; }
+.pill { display: flex; align-items: center; gap: .5rem; background: #fff; border: 1px solid #d5dbe8; border-radius: 999px; padding: 0 1rem; box-shadow: 0 2px 8px rgba(0, 0, 50, .08); flex: 1 1 200px; color: var(--muted); }
+.pill input { border: 0; outline: 0; padding: .8rem 0; background: transparent; }
+.pill input:focus { outline: 0; }
+.team-circle { width: min(380px, 80vw); aspect-ratio: 1; border-radius: 50%; overflow: hidden; justify-self: center; box-shadow: var(--shadow); border: 6px solid #fff; }
+.team-circle svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 800px) { .careers-hero-grid { grid-template-columns: 1fr; } }
+.jobs-wrap { padding: 2rem 0; }
+.jobs td small { color: var(--muted); }
+.career-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.post header { display: flex; align-items: center; gap: .6rem; margin-bottom: .8rem; }
+.post header small { display: block; color: var(--muted); }
+.verified { display: inline-grid; place-items: center; width: 16px; height: 16px; background: #1d9bf0; color: #fff; border-radius: 50%; vertical-align: middle; }
+.post-art { height: 170px; border-radius: 8px; display: grid; place-items: center; color: rgba(255, 255, 255, .92); margin-bottom: .8rem; }
+.post p { margin: 0; font-weight: 600; color: var(--navy); }
+@media (max-width: 900px) { .career-cards { grid-template-columns: 1fr; } }
+.network { background: radial-gradient(circle at 15% 20%, #2a4fd8 0, transparent 45%), linear-gradient(120deg, #0a2a6b, #123a8f); color: #fff; text-align: center; padding: 4rem 0; }
+.network h2 { color: #fff; font-size: 2rem; }
+.network p { max-width: 640px; margin: 0 auto 1.5rem; opacity: .9; }
+
+/* Account-type sign-in */
+.signin-selection,
+.account-signin {
+  display: grid;
+  min-height: 720px;
+  padding: 64px 24px;
+  place-items: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(96, 75, 210, .38), transparent 34%),
+    radial-gradient(circle at 84% 76%, rgba(39, 93, 196, .35), transparent 38%),
+    linear-gradient(135deg, #0a0b55 0%, #111a78 48%, #221066 100%);
+}
+.signin-selection__content {
+  display: flex;
+  width: min(480px, 100%);
+  flex-direction: column;
+  align-items: center;
+}
+.signin-selection h1 {
+  margin: 0 0 32px;
+  color: #fff;
+  font-size: clamp(28px, 3vw, 40px);
+  text-align: center;
+}
+.signin-selection__actions {
+  display: grid;
+  width: 100%;
+  gap: 26px;
+}
+.signin-selection__button {
+  display: grid;
+  min-height: 98px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .44);
+  border-radius: 14px;
+  background: rgba(6, 8, 62, .53);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .14), 0 12px 28px rgba(0, 0, 30, .24);
+  color: #fff;
+  font-size: clamp(22px, 2.15vw, 29px);
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.signin-selection__button:hover {
+  border-color: #fff;
+  background: rgba(27, 35, 124, .78);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.signin-selection__button:focus-visible,
+.signin-selection__admin:focus-visible,
+.password-field button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+.signin-selection__admin {
+  margin-top: 28px;
+  color: rgba(255, 255, 255, .88);
+  font-weight: 600;
+}
+.account-signin__card { width: min(460px, 100%); padding: 34px; }
+.account-signin__eyebrow { margin: 0 0 4px; color: #4b5f91; font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.account-signin__card h1 { margin-bottom: 22px; }
+.password-field { position: relative; display: block; }
+.password-field input { padding-right: 70px; }
+.password-field button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transform: translateY(-50%);
+}
+.account-dashboard { min-height: 65vh; display: grid; place-items: center; padding: 48px 20px; background: var(--bg-tint); }
+.account-dashboard__card { width: min(560px, 100%); padding: 38px; }
+@media (max-width: 600px) {
+  .signin-selection,
+  .account-signin { min-height: 640px; padding: 42px 18px; }
+  .signin-selection__actions { gap: 18px; }
+  .signin-selection__button { min-height: 76px; border-radius: 12px; font-size: 22px; }
+  .signin-selection h1 { margin-bottom: 24px; }
+  .account-signin__card { padding: 28px 22px; }
+}

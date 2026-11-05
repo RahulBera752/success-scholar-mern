@@ -1,0 +1,203 @@
+/* Student feedback modal */
+.feedback-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(4, 18, 48, .68);
+  backdrop-filter: blur(8px);
+  animation: feedback-fade-in .18s ease-out;
+}
+.feedback-modal {
+  width: min(100%, 660px);
+  max-height: min(92vh, 900px);
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 24px;
+  background: #fff;
+  color: #172b50;
+  box-shadow: 0 28px 90px rgba(0, 15, 50, .3);
+  animation: feedback-rise-in .22s ease-out;
+}
+.feedback-modal-top {
+  position: relative;
+  padding: 28px 32px 24px;
+  color: #fff;
+  background: radial-gradient(circle at 90% 5%, rgba(91, 139, 255, .42), transparent 35%), linear-gradient(135deg, #08245f, #1647b8);
+}
+.feedback-modal-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,255,255,.38);
+  border-radius: 14px;
+  background: rgba(255,255,255,.12);
+  font-size: 21px;
+  font-weight: 800;
+}
+.feedback-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+.feedback-modal-close:hover { background: rgba(255,255,255,.22); }
+.feedback-modal-close:disabled { opacity: .55; cursor: not-allowed; }
+.feedback-eyebrow {
+  margin: 0 0 8px;
+  color: #9ec5ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+.feedback-modal-top h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+.feedback-intro {
+  max-width: 490px;
+  margin: 10px 0 0;
+  color: rgba(255,255,255,.83);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.feedback-form { padding: 24px 32px 30px; }
+.feedback-user-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  margin-bottom: 23px;
+  border: 1px solid #e4eaf4;
+  border-radius: 15px;
+  background: #f7f9fd;
+}
+.feedback-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: #e0eaff;
+  color: #123b91;
+  font-weight: 800;
+}
+.feedback-user-summary div { display: grid; gap: 3px; min-width: 0; }
+.feedback-user-summary strong { color: #142b56; font-size: 13px; }
+.feedback-user-summary div span { overflow-wrap: anywhere; color: #6c7890; font-size: 12px; }
+.feedback-private-label {
+  margin-left: auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #e8f7ef;
+  color: #167448;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.feedback-field { display: grid; gap: 8px; margin: 0 0 18px; }
+.feedback-field > span, .feedback-rating-field legend {
+  color: #20385f;
+  font-size: 13px;
+  font-weight: 750;
+}
+.feedback-field em { color: #d33b54; font-style: normal; }
+.feedback-field > span small { color: #7d8aa1; font-weight: 500; }
+.feedback-field input, .feedback-field select, .feedback-field textarea {
+  width: 100%;
+  border: 1px solid #dbe3ef;
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: #192e53;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .16s, box-shadow .16s;
+}
+.feedback-field input, .feedback-field select { min-height: 46px; padding: 0 13px; }
+.feedback-field textarea { min-height: 92px; padding: 12px 13px; resize: vertical; line-height: 1.55; }
+.feedback-field input:focus, .feedback-field select:focus, .feedback-field textarea:focus {
+  border-color: #3569d4;
+  box-shadow: 0 0 0 3px rgba(53,105,212,.12);
+}
+.feedback-field input:disabled, .feedback-field select:disabled, .feedback-field textarea:disabled { background: #f4f6fa; }
+.feedback-field > small { justify-self: end; color: #8a96a9; font-size: 11px; }
+.feedback-rating-field { min-width: 0; padding: 0; margin: 0 0 20px; border: 0; }
+.feedback-rating-field legend { margin-bottom: 8px; }
+.feedback-rating-options { display: flex; align-items: center; gap: 5px; }
+.feedback-rating-star {
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  color: #cbd3e1;
+  font-size: 31px;
+  line-height: 1;
+  cursor: pointer;
+}
+.feedback-rating-star.is-selected { color: #f5ad28; }
+.feedback-rating-star:focus-visible { outline: 2px solid #3569d4; outline-offset: 2px; border-radius: 4px; }
+.feedback-rating-star:disabled { cursor: not-allowed; }
+.feedback-rating-options > span { margin-left: 8px; color: #66758e; font-size: 12px; }
+.feedback-form-error {
+  padding: 11px 13px;
+  margin: 0 0 15px;
+  border: 1px solid #f5c4ca;
+  border-radius: 10px;
+  background: #fff1f2;
+  color: #a51d35;
+  font-size: 13px;
+}
+.feedback-form-footer { padding-top: 18px; border-top: 1px solid #e9edf4; }
+.feedback-form-footer > p { margin: 0 0 16px; color: #7b879b; font-size: 11px; line-height: 1.5; }
+.feedback-form-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.feedback-cancel-btn, .feedback-submit-btn {
+  min-height: 44px;
+  padding: 0 17px;
+  border-radius: 11px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.feedback-cancel-btn { border: 1px solid #dbe2ed; background: #fff; color: #405271; }
+.feedback-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid #123a8c;
+  background: #0c2c70;
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(12,44,112,.18);
+}
+.feedback-submit-btn:hover { background: #1647b8; }
+.feedback-submit-btn:disabled, .feedback-cancel-btn:disabled { opacity: .6; cursor: not-allowed; }
+@keyframes feedback-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes feedback-rise-in { from { opacity: 0; transform: translateY(10px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 560px) {
+  .feedback-modal-overlay { padding: 10px; align-items: center; }
+  .feedback-modal { max-height: 95vh; border-radius: 19px; }
+  .feedback-modal-top { padding: 23px 20px 20px; }
+  .feedback-form { padding: 20px; }
+  .feedback-private-label { display: none; }
+  .feedback-form-actions { flex-direction: column-reverse; }
+  .feedback-form-actions button { width: 100%; }
+}

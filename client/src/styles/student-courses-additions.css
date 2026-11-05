@@ -1,0 +1,20 @@
+
+/* My Courses / purchased course states */
+.student-my-courses { padding-top: 42px; padding-bottom: 46px; }
+.student-my-courses .student-section-heading p { color: #64748b; margin: 8px 0 0; }
+.student-courses-status { padding: 18px; color: #334155; }
+.student-courses-error { color: #b42318; }
+.student-courses-error button { margin-left: 12px; padding: 8px 14px; border: 0; border-radius: 8px; background: #08245f; color: #fff; cursor: pointer; }
+.student-courses-empty { max-width: 520px; margin: 12px auto 24px; padding: 34px 24px; text-align: center; background: #fff; border: 1px solid #e5eaf3; border-radius: 18px; box-shadow: 0 8px 24px rgba(6,28,80,.07); }
+.student-courses-empty h3 { margin: 0 0 8px; color: #08245f; }
+.student-courses-empty p { color: #64748b; margin-bottom: 22px; }
+.student-courses-empty .student-course-button { max-width: 220px; margin: 0 auto; cursor: pointer; }
+.student-purchased-course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 340px)); justify-content: center; gap: 24px; padding: 12px 0 24px; }
+.student-purchased-course-card { min-height: 0; padding-top: 30px; }
+.student-purchased-badge { display: inline-flex; align-self: flex-start; padding: 6px 12px; margin-bottom: 14px; border-radius: 999px; background: #e4f8ec; color: #167345; font-size: 11px; font-weight: 800; letter-spacing: .6px; }
+.student-purchase-meta { color: #475569; font-size: 14px; line-height: 1.9; margin: 0 0 18px; }
+.student-start-course-button { border: 0; cursor: pointer; }
+.student-profile-dropdown a { display: block; }
+@media (max-width: 600px) {
+  .student-purchased-course-grid { grid-template-columns: minmax(0, 1fr); }
+}

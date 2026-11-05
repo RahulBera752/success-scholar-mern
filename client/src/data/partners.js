@@ -1,0 +1,27 @@
+export const companies = [
+  { name: 'Volkswagen', src: '/assets/company-logos/volkswagen.png' },
+  { name: 'Axis Bank', src: '/assets/company-logos/axis-bank.webp' },
+  { name: 'Accenture', src: '/assets/company-logos/accenture.webp' },
+  { name: 'PwC', src: '/assets/company-logos/pwc.webp' },
+  { name: 'Capgemini', src: '/assets/company-logos/capgemini.png' },
+  { name: 'Infosys', src: '/assets/company-logos/infosys.webp' },
+  { name: 'Aditya Birla Group', src: '/assets/company-logos/aditya-birla.webp' },
+  { name: 'Tata Technologies', src: '/assets/company-logos/tata-technologies.png' },
+  { name: 'TCS', src: '/assets/company-logos/tcs.webp' },
+  { name: 'Microsoft', src: '/assets/company-logos/microsoft.webp' },
+  { name: 'UST', src: '/assets/company-logos/ust.png' },
+  { name: 'Genpact', src: '/assets/company-logos/genpact.png' },
+  { name: 'Sonata Software', src: '/assets/company-logos/sonata.png' },
+];
+export const institutions = [
+  { name: 'University of Delhi', src: '/assets/institution-logos/D.U%20PNG.png' },
+  { name: 'Nagar College', src: '/assets/institution-logos/NNEC%20PNG.png' },
+  { name: 'Jadavpur University', src: '/assets/institution-logos/J.U.%20PNG.png' },
+  { name: 'Indian Institute of Management Lucknow', src: '/assets/institution-logos/iiml2.png' },
+  { name: 'Indian Institute of Engineering Science and Technology, Shibpur', src: '/assets/institution-logos/BESU.png' },
+  { name: 'JIS University', src: '/assets/institution-logos/u2.png' },
+  { name: 'Kaziranga University', src: '/assets/institution-logos/u3.png' },
+  { name: 'AIEM', src: '/assets/institution-logos/u4.png' },
+  { name: 'Techno', src: '/assets/institution-logos/u7.png' },
+  { name: 'Asutosh College', src: '/assets/institution-logos/u8.png' },
+];

@@ -1,0 +1,58 @@
+﻿export const referenceTestimonials = [
+  {
+    id: 'reference-1',
+    name: 'Debadrita Kalsar',
+    role: 'Student',
+    message: 'I used to struggle a lot while speaking with strangers or in public places, but Success Scholar completely changed that. Their way of teaching made English very easy for me to understand. Now I can speak in front of others without fear.',
+    avatar: '',
+  },
+  {
+    id: 'reference-2',
+    name: 'Shreya Chandra',
+    role: 'Student',
+    message: 'Success Scholar is a great place to learn. They help us improve and explore new things in life. Their fun activities and teamwork games build confidence. The team is friendly and understands students deeply.',
+    avatar: '',
+  },
+  {
+    id: 'reference-3',
+    name: 'Piyush Patwari',
+    role: 'Student',
+    message: 'Great initiative by Success Scholar to mentor individuals who wish to enhance communication and personality skills. The team is passionate and professional, providing continuous support and guidance.',
+    avatar: '',
+  },
+  {
+    id: 'reference-4',
+    name: 'Shreyashi Sarkar',
+    role: 'Student',
+    message: 'My internship with Success Scholar was transformational. I was welcomed warmly, guided patiently, and given meaningful responsibilities. Every task taught me something new and boosted my confidence.',
+    avatar: '',
+  },
+  {
+    id: 'reference-5',
+    name: 'Aniket Gaurav',
+    role: 'Student',
+    message: "This workshop helped me improve my skillsets in unique ways. It was fun, interactive, and exactly what a coaching should be. I'm thankful to be part of Success Scholar.",
+    avatar: '',
+  },
+  {
+    id: 'reference-6',
+    name: 'Sanskriti Chatterjee',
+    role: 'Student',
+    message: 'Really loving the sessions so far! It’s been just three days, and I’m already enjoying every bit of it. Each day brings something new to learn and experience — from developing essential soft skills to gaining a better understanding of how to apply them in real-life situations.',
+    avatar: '',
+  },
+  {
+    id: 'reference-7',
+    name: 'Ankur Bhattacharyya',
+    role: 'Student',
+    message: 'Success Scholar feels like a family where students grow, learn, and become more confident every day. My first session with Tuhin Sir was truly memorable — the way he teaches and connects with us makes learning fun, inspiring, and full of energy.',
+    avatar: '',
+  },
+  {
+    id: 'reference-8',
+    name: 'Arnab Bhattacharya',
+    role: 'Student',
+    message: 'The session was interactive, engaging, and full of practical examples that made learning easier. Overall, I’m very satisfied with the experience and definitely looking forward to attending more such valuable sessions in the future!',
+    avatar: '',
+  },
+];
