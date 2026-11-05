@@ -1,4 +1,6 @@
+
 const router = require('express').Router();
+
 const jwt = require('jsonwebtoken');
 const crypto = require('node:crypto');
 const nodemailer = require('nodemailer');
@@ -7,7 +9,9 @@ const User = require('../models/User');
 const { protect, accountTypeOnly } = require('../middleware/auth');
 
 const accountTypes = ['student', 'corporate', 'college', 'school', 'admin'];
-const otpRegistrationTypes = ['corporate', 'college', 'school'];
+
+// UPDATED: Student added to OTP registration.
+const otpRegistrationTypes = ['student', 'corporate', 'college', 'school'];
 
 // Temporary storage for OTP registrations.
 // For production, use a database collection with TTL or Redis.
@@ -87,7 +91,12 @@ const otpEmailFor = (accountType, form) =>
     ? form.contactEmail
     : form.email;
 
+// UPDATED: Added student name handling.
 const getRegistrationName = (accountType, form) => {
+  if (accountType === 'student') {
+    return form.fullName;
+  }
+
   if (accountType === 'corporate') {
     return form.employeeName;
   }
@@ -107,7 +116,18 @@ const isStrongPassword = (password) =>
   /\d/.test(password) &&
   /[^A-Za-z0-9]/.test(password);
 
+// UPDATED: Added student registration fields.
+// Existing account registration fields are unchanged.
 const requiredFields = {
+  student: [
+    'fullName',
+    'email',
+    'phone',
+    'dob',
+    'password',
+    'confirmPassword',
+  ],
+
   corporate: [
     'companyName',
     'employeeName',
@@ -172,7 +192,9 @@ const validateRegistration = (accountType, form) => {
   }
 
   if (!emailOk(form.email)) {
-    return 'Enter a valid organization email address.';
+    return accountType === 'student'
+      ? 'Enter a valid email address.'
+      : 'Enter a valid organization email address.';
   }
 
   const otpEmail = otpEmailFor(accountType, form);
@@ -215,6 +237,7 @@ const validateRegistration = (accountType, form) => {
 // ============================================================
 // STUDENT REGISTRATION
 // POST /api/auth/register
+// Existing direct registration route preserved.
 // ============================================================
 
 router.post('/register', async (req, res) => {
@@ -277,7 +300,7 @@ router.post('/register', async (req, res) => {
 });
 
 // ============================================================
-// SEND OTP FOR CORPORATE, COLLEGE, OR SCHOOL REGISTRATION
+// SEND OTP FOR STUDENT, CORPORATE, COLLEGE, OR SCHOOL
 // POST /api/auth/register-otp/send
 // ============================================================
 
@@ -306,7 +329,10 @@ router.post('/register-otp/send', async (req, res) => {
 
     if (existingOrganizationEmail) {
       return res.status(409).json({
-        message: 'This organization email is already registered.',
+        message:
+          accountType === 'student'
+            ? 'This email is already registered.'
+            : 'This organization email is already registered.',
       });
     }
 
@@ -366,7 +392,7 @@ router.post('/register-otp/send', async (req, res) => {
             <div style="font-size:32px;font-weight:bold;letter-spacing:8px;color:#1649c8;padding:18px 0">
               ${otp}
             </div>
-            <p>This code expires in 10 minutes. Do not share it with anyone.</p>
+            <p>This code expires in 10 minutes. Do not share this code with anyone.</p>
           </div>
         `,
       });
@@ -389,7 +415,7 @@ router.post('/register-otp/send', async (req, res) => {
 });
 
 // ============================================================
-// VERIFY OTP AND CREATE ORGANIZATION ACCOUNT
+// VERIFY OTP AND CREATE ACCOUNT
 // POST /api/auth/register-otp/verify
 // ============================================================
 
@@ -477,7 +503,7 @@ router.post('/register-otp/verify', async (req, res) => {
       pendingRegistrations.delete(key);
 
       return res.status(409).json({
-        message: 'This organization email is already registered.',
+        message: 'This email is already registered.',
       });
     }
 
@@ -495,10 +521,7 @@ router.post('/register-otp/verify', async (req, res) => {
       });
     }
 
-    // IMPORTANT:
-    // The User model does not accept "corporate", "college", or
-    // "school" as role values. Keep role compatible with the schema
-    // and save the actual account type separately.
+    // Existing User schema compatibility preserved.
     const user = await User.create({
       name,
       email: organizationEmail,

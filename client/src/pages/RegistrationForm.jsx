@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -23,35 +22,33 @@ const configurations = {
   corporate: {
     title: 'Corporate Registration',
     fields: [
-      ['companyName', 'Company Name', 'text', 'Enter company name'],
-      ['employeeName', 'Employee Name', 'text', 'Enter employee name'],
-      ['designation', 'Employee Designation', 'text', 'Enter designation'],
-      ['email', 'Employee Email ID', 'email', 'Enter employee email'],
-      ['district', 'Company District', 'text', 'Enter company district'],
-      ['password', 'Password', 'password', 'Create a password'],
-      ['confirmPassword', 'Confirm Password', 'password', 'Confirm password'],
+      ['companyName', 'Company Name', 'text', 'Enter Company Name'],
+      ['employeeName', 'Employee Name', 'text', 'Enter Employee Name'],
+      ['designation', 'Employee Designation', 'text', 'Enter Designation'],
+      ['email', 'Employee Email ID', 'email', 'Enter Email ID'],
+      ['district', 'Company District', 'text', 'Enter Company District'],
     ],
   },
   college: {
     title: 'College Registration',
     fields: [
-      ['collegeName', 'College Name', 'text', 'Enter college name'],
-      ['district', 'College District', 'text', 'Enter district'],
-      ['state', 'College State', 'text', 'Enter state'],
-      ['phone', 'College Phone Number', 'tel', 'Enter phone number'],
-      ['email', 'College Email ID', 'email', 'Enter college email'],
-      ['affiliation', 'Affiliated To', 'text', 'Enter affiliation'],
-      ['stream', 'College Stream', 'select', 'Select stream'],
-      ['studentCount', 'Expected Student Count', 'number', 'Enter student count'],
-      ['budget', 'Approx Budget Per Student', 'number', 'Enter budget'],
-      ['contactName', 'Contact Person Name', 'text', 'Enter contact name'],
-      ['employeeId', 'Contact Person Employee ID (Optional)', 'text', 'Enter employee ID'],
-      ['department', 'Department', 'text', 'Enter department'],
-      ['designation', 'Designation', 'text', 'Enter designation'],
-      ['contactPhone', 'Contact Person Phone', 'tel', 'Enter phone number'],
-      ['programType', 'Program Type', 'select', 'Select program'],
-      ['duration', 'Start Time Frame', 'select', 'Select duration'],
-      ['contactEmail', 'Contact Email (for OTP)', 'email', 'Enter contact email'],
+      ['collegeName', 'College Name', 'text', 'Enter College Name'],
+      ['district', 'College District', 'text', 'Enter Location'],
+      ['state', 'College State', 'text', 'Enter State'],
+      ['phone', 'College Phone Number', 'tel', 'Enter Phone Number'],
+      ['email', 'College Email ID', 'email', 'Enter College Email'],
+      ['affiliation', 'Affiliated To', 'text', 'Enter Affiliation'],
+      ['stream', 'College Stream', 'select', 'Select Stream'],
+      ['studentCount', 'Expected Student Count', 'number', 'Enter Student Count'],
+      ['budget', 'Approx Budget Per Student', 'number', 'Enter Budget'],
+      ['contactName', 'Contact Person Name', 'text', 'Enter Name'],
+      ['employeeId', 'Contact Person Employee ID (Optional)', 'text', 'Enter Employee ID'],
+      ['department', 'Department', 'text', 'Enter Department'],
+      ['designation', 'Designation', 'text', 'Enter Designation'],
+      ['contactPhone', 'Contact Person Phone', 'tel', 'Enter Phone Number'],
+      ['programType', 'Program Type', 'select', 'Select Program Type'],
+      ['duration', 'Start Time Frame', 'select', 'Select Duration'],
+      ['contactEmail', 'Contact Email (for OTP)', 'email', 'Enter Email'],
       ['password', 'Password', 'password', 'Create a password'],
       ['confirmPassword', 'Confirm Password', 'password', 'Confirm password'],
     ],
@@ -59,22 +56,22 @@ const configurations = {
   school: {
     title: 'School Registration',
     fields: [
-      ['schoolName', 'School Name', 'text', 'Enter school name'],
-      ['district', 'District', 'text', 'Enter district'],
-      ['state', 'State', 'text', 'Enter state'],
-      ['phone', 'Phone Number', 'tel', 'Enter phone number'],
-      ['email', 'School Email ID', 'email', 'Enter school email'],
-      ['affiliation', 'Affiliated To', 'text', 'Enter affiliation'],
-      ['studentCount', 'Expected Student Count', 'number', 'Enter student count'],
-      ['budget', 'Approx Budget Per Student', 'number', 'Enter budget'],
-      ['contactName', 'Contact Person Name', 'text', 'Enter contact name'],
-      ['employeeId', 'Employee ID (Optional)', 'text', 'Enter employee ID'],
-      ['department', 'Department', 'text', 'Enter department'],
-      ['designation', 'Designation', 'text', 'Enter designation'],
-      ['contactPhone', 'Contact Person Phone', 'tel', 'Enter phone number'],
-      ['programType', 'Program Type', 'select', 'Select program'],
-      ['duration', 'Start Time Frame', 'select', 'Select duration'],
-      ['contactEmail', 'Contact Email (for OTP)', 'email', 'Enter contact email'],
+      ['schoolName', 'School Name', 'text', 'Enter School Name'],
+      ['district', 'District', 'text', 'Enter District'],
+      ['state', 'State', 'text', 'Enter State'],
+      ['phone', 'Phone Number', 'tel', 'Enter Phone Number'],
+      ['email', 'School Email ID', 'email', 'Enter School Email'],
+      ['affiliation', 'Affiliated To', 'text', 'Enter Affiliation'],
+      ['studentCount', 'Expected Student Count', 'number', 'Enter Student Count'],
+      ['budget', 'Approx Budget Per Student', 'number', 'Enter Budget'],
+      ['contactName', 'Contact Person Name', 'text', 'Enter Name'],
+      ['employeeId', 'Employee ID (Optional)', 'text', 'Enter Employee ID'],
+      ['department', 'Department', 'text', 'Enter Department'],
+      ['designation', 'Designation', 'text', 'Enter Designation'],
+      ['contactPhone', 'Contact Person Phone', 'tel', 'Enter Phone Number'],
+      ['programType', 'Program Type', 'select', 'Select Program'],
+      ['duration', 'Start Time Frame', 'select', 'Select Duration'],
+      ['contactEmail', 'Contact Email (for OTP)', 'email', 'Enter Email'],
       ['password', 'Password', 'password', 'Create a password'],
       ['confirmPassword', 'Confirm Password', 'password', 'Confirm password'],
     ],
@@ -90,15 +87,10 @@ const selectOptions = {
     'Leadership Training',
     'Other',
   ],
-  duration: [
-    'Immediately',
-    'Within 1 Month',
-    'Within 3 Months',
-    'Within 6 Months',
-  ],
+  duration: ['Immediately', 'Within 1 Month', 'Within 3 Months', 'Within 6 Months'],
 };
 
-function isStrongPassword(password) {
+function isStrongPassword(password = '') {
   return (
     password.length >= 8 &&
     /[A-Z]/.test(password) &&
@@ -116,21 +108,18 @@ async function postJson(path, body) {
   });
 
   const data = await response.json().catch(() => ({}));
-
   if (!response.ok) {
     throw new Error(data.message || 'Request failed. Please try again.');
   }
-
   return data;
 }
 
 export default function RegistrationForm() {
   const { accountType } = useParams();
   const navigate = useNavigate();
-  const { register } = useAuth();
+  const { login } = useAuth();
 
   const config = configurations[accountType];
-
   const [form, setForm] = useState({});
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('error');
@@ -151,54 +140,52 @@ export default function RegistrationForm() {
 
   const updateField = (event) => {
     const { name, value } = event.target;
-
     setForm((previous) => ({ ...previous, [name]: value }));
     setMessage('');
-  };
-
-  const showMessage = (text, type = 'error') => {
-    setMessage(text);
-    setMessageType(type);
   };
 
   const validateForm = () => {
     for (const [name, label] of config.fields) {
       if (name === 'employeeId') continue;
-
       if (!String(form[name] || '').trim()) {
-        showMessage(`${label} is required.`);
+        setMessage(`${label} is required.`);
+        setMessageType('error');
         return false;
       }
     }
 
-    const password = form.password || '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email || '')) {
+      setMessage('Please enter a valid email address.');
+      setMessageType('error');
+      return false;
+    }
 
-    if (!isStrongPassword(password)) {
-      showMessage(
+    if (!isStrongPassword(form.password || '')) {
+      setMessage(
         'Password must contain at least 8 characters, including uppercase and lowercase letters, a number, and a special character.'
       );
+      setMessageType('error');
       return false;
     }
 
-    if (password !== form.confirmPassword) {
-      showMessage('Passwords do not match.');
+    if (form.password !== form.confirmPassword) {
+      setMessage('Passwords do not match.');
+      setMessageType('error');
       return false;
     }
 
-    const email = accountType === 'college' || accountType === 'school'
-      ? form.contactEmail
-      : form.email;
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || '')) {
-      showMessage('Please enter a valid email address.');
-      return false;
+    for (const field of ['phone', 'contactPhone']) {
+      if (form[field] && !/^\d{10}$/.test(String(form[field]))) {
+        setMessage('Please enter a valid 10-digit phone number.');
+        setMessageType('error');
+        return false;
+      }
     }
 
-    const phoneFields = ['phone', 'contactPhone'];
-
-    for (const field of phoneFields) {
-      if (form[field] && !/^\d{10}$/.test(form[field])) {
-        showMessage(`${field === 'phone' ? 'Phone number' : 'Contact phone'} must contain exactly 10 digits.`);
+    if (accountType === 'college' || accountType === 'school') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.contactEmail || '')) {
+        setMessage('Please enter a valid contact email for OTP verification.');
+        setMessageType('error');
         return false;
       }
     }
@@ -208,88 +195,62 @@ export default function RegistrationForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (busy) return;
-
     setMessage('');
 
-    if (accountType === 'student') {
-      if (!isStrongPassword(form.password || '')) {
-        showMessage(
-          'Password must contain at least 8 characters, including uppercase and lowercase letters, a number, and a special character.'
-        );
-        return;
-      }
-
-      if (form.password !== form.confirmPassword) {
-        showMessage('Passwords do not match.');
-        return;
-      }
-
-      if (!/^\d{10}$/.test(form.phone || '')) {
-        showMessage('Please enter a valid 10-digit mobile number.');
-        return;
-      }
+    if (!otpSent) {
+      if (!validateForm()) return;
 
       setBusy(true);
-
       try {
-        await register({
-          name: form.fullName.trim(),
-          email: form.email.trim().toLowerCase(),
-          password: form.password,
-          phone: form.phone.trim(),
+        const result = await postJson('/register-otp/send', {
+          ...form,
+          accountType,
         });
-
-        showMessage('Registration successful. Redirecting...', 'success');
-        navigate('/student', { replace: true });
+        setOtpSent(true);
+        setMessage(
+          result.message || 'A 6-digit OTP has been sent to your email address.'
+        );
+        setMessageType('success');
       } catch (error) {
-        showMessage(error.message || 'Registration failed.');
+        setMessage(error.message || 'Unable to send OTP.');
+        setMessageType('error');
       } finally {
         setBusy(false);
       }
-
       return;
     }
 
-    if (!validateForm()) return;
+    if (!/^\d{6}$/.test(otp)) {
+      setMessage('Please enter the 6-digit OTP sent to your email.');
+      setMessageType('error');
+      return;
+    }
 
     setBusy(true);
-
     try {
-      const dataToSend = {
+      const result = await postJson('/register-otp/verify', {
         ...form,
         accountType,
-      };
+        otp,
+      });
 
-      if (!otpSent) {
-        const result = await postJson('/register-otp/send', dataToSend);
-
-        setOtpSent(true);
-        showMessage(
-          result.message || 'OTP sent. Check your email.',
-          'success'
-        );
-      } else {
-        if (!/^\d{6}$/.test(otp)) {
-          showMessage('Enter the 6-digit OTP sent to your email.');
-          return;
-        }
-
-        const result = await postJson('/register-otp/verify', {
-          ...dataToSend,
-          otp,
-        });
-
-        showMessage(
-          result.message || 'Registration successful. Please sign in.',
-          'success'
-        );
-
-        navigate(`/signin/${accountType}`, { replace: true });
+      if (accountType === 'student') {
+        await login(form.email.trim().toLowerCase(), form.password, 'student');
+        setMessage('Email verified! Registration successful. Redirecting...');
+        setMessageType('success');
+        navigate('/student', { replace: true });
+        return;
       }
+
+      setMessage(
+        result.message || 'Registration successful. Please sign in.'
+      );
+      setMessageType('success');
+      navigate(`/signin/${accountType}`, { replace: true });
     } catch (error) {
-      showMessage(error.message || 'Registration failed.');
+      setMessage(error.message || 'OTP verification failed. Please try again.');
+      setMessageType('error');
     } finally {
       setBusy(false);
     }
@@ -305,6 +266,7 @@ export default function RegistrationForm() {
       <form
         className="registration-form-card"
         onSubmit={handleSubmit}
+        noValidate
       >
         <h1>{config.title}</h1>
 
@@ -323,7 +285,7 @@ export default function RegistrationForm() {
                 name={name}
                 value={form[name] || ''}
                 onChange={updateField}
-                required
+                required={name !== 'employeeId'}
                 disabled={busy || otpSent}
               >
                 <option value="">{placeholder}</option>
@@ -349,20 +311,33 @@ export default function RegistrationForm() {
                     : undefined
                 }
                 autoComplete={
-                  type === 'password' ? 'new-password' : 'off'
+                  type === 'password'
+                    ? 'new-password'
+                    : name === 'email'
+                      ? 'email'
+                      : name === 'fullName'
+                        ? 'name'
+                        : 'off'
                 }
                 minLength={name === 'password' ? 8 : undefined}
                 disabled={busy || otpSent}
               />
             )}
+
+            {name === 'password' && accountType === 'student' && (
+              <small className="registration-help">
+                Use at least 8 characters with uppercase, lowercase, a number,
+                and a special character.
+              </small>
+            )}
           </div>
         ))}
 
-        {accountType !== 'student' && otpSent && (
+        {otpSent && (
           <div className="registration-field">
-            <label htmlFor="otp">Email Verification OTP *</label>
+            <label htmlFor="registrationOtp">Email Verification OTP *</label>
             <input
-              id="otp"
+              id="registrationOtp"
               name="otp"
               type="text"
               inputMode="numeric"
@@ -379,33 +354,21 @@ export default function RegistrationForm() {
               disabled={busy}
             />
             <small className="registration-help">
-              Verification code sent to {otpEmail || 'your email'}.
+              Verification code sent to {otpEmail || 'your email'}. The OTP
+              expires in 10 minutes.
             </small>
           </div>
         )}
 
-        {accountType === 'student' && (
-          <small className="registration-help">
-            Use at least 8 characters with uppercase, lowercase, a number,
-            and a special character.
-          </small>
-        )}
-
-        <button
-          className="registration-submit"
-          type="submit"
-          disabled={busy}
-        >
+        <button className="registration-submit" type="submit" disabled={busy}>
           {busy
             ? 'Please wait...'
-            : accountType === 'student'
-              ? 'Register'
-              : otpSent
-                ? 'Verify OTP & Register'
-                : 'Send OTP'}
+            : otpSent
+              ? 'Verify OTP & Register'
+              : 'Register'}
         </button>
 
-        {otpSent && accountType !== 'student' && (
+        {otpSent && (
           <button
             className="registration-submit"
             type="button"
