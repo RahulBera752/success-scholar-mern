@@ -1,6 +1,6 @@
 
 require('dotenv').config({
-  path: require('path').join(__dirname, '..', '.env'),
+  path: require('path').resolve(__dirname, '..', '.env'),
 });
 
 const express = require('express');
@@ -8,11 +8,19 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const { notFound, errorHandler } = require('./middleware/error');
 
+// Check required environment variables
 if (!process.env.JWT_SECRET) {
   console.error(
     'Missing JWT_SECRET. Copy server/.env.example to server/.env and set values.'
   );
   process.exit(1);
+}
+
+// Check Resend configuration
+if (!process.env.RESEND_API_KEY) {
+  console.warn(
+    'WARNING: RESEND_API_KEY is missing from server/.env.'
+  );
 }
 
 const app = express();

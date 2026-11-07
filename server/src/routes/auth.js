@@ -3,7 +3,6 @@ const router = require('express').Router();
 
 const jwt = require('jsonwebtoken');
 const crypto = require('node:crypto');
-const nodemailer = require('nodemailer');
 
 const User = require('../models/User');
 const { protect, accountTypeOnly } = require('../middleware/auth');
@@ -62,28 +61,46 @@ const handleAuthError = (res, label, error) => {
   });
 };
 
-// SMTP configuration
-const mailer = () => {
-  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const port = Number(process.env.SMTP_PORT || 587);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+// Resend HTTP API configuration
+const sendEmail = async ({ to, subject, text, html }) => {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM;
 
-  if (!user || !pass) {
-    throw new Error(
-      'SMTP_USER and SMTP_PASS must be configured in server/.env.'
-    );
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY must be configured in the backend environment.');
   }
 
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: {
-      user,
-      pass,
+  if (!from) {
+    throw new Error('RESEND_FROM must be configured with a verified sender address.');
+  }
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      subject,
+      text,
+      html,
+    }),
   });
+
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    const message =
+      result.message ||
+      result.error ||
+      `Resend API request failed with status ${response.status}.`;
+
+    throw new Error(`Resend API error (${response.status}): ${message}`);
+  }
+
+  return result;
 };
 
 const otpEmailFor = (accountType, form) =>
@@ -380,8 +397,7 @@ router.post('/register-otp/send', async (req, res) => {
     });
 
     try {
-      await mailer().sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      await sendEmail({
         to: verificationEmail,
         subject: 'Your Success Scholar registration OTP',
         text: `Your Success Scholar verification code is ${otp}. It expires in 10 minutes. Do not share this code with anyone.`,
@@ -409,7 +425,7 @@ router.post('/register-otp/send', async (req, res) => {
 
     return res.status(500).json({
       message:
-        'Unable to send OTP. Check SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and the backend terminal.',
+        'Unable to send OTP. Check RESEND_API_KEY, RESEND_FROM, and the backend logs.',
     });
   }
 });
