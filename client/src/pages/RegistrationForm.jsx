@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -5,7 +6,9 @@ import '../styles/register.css';
 
 const API_BASE_URL = (
   import.meta.env.VITE_API_URL || 'http://localhost:5000'
-).replace(/\/+$/, '');
+)
+  .replace(/\/+$/, '')
+  .replace(/\/api$/i, '');
 
 const configurations = {
   student: {
