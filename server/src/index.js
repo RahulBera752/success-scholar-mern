@@ -16,10 +16,13 @@ if (!process.env.JWT_SECRET) {
   process.exit(1);
 }
 
-// Check Resend configuration
-if (!process.env.RESEND_API_KEY) {
+// Check Google Apps Script email configuration
+if (
+  !process.env.GOOGLE_APPS_SCRIPT_URL ||
+  !process.env.GOOGLE_APPS_SCRIPT_SECRET
+) {
   console.warn(
-    'WARNING: RESEND_API_KEY is missing from server/.env.'
+    'WARNING: Google Apps Script email configuration is missing from server/.env.'
   );
 }
 

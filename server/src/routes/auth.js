@@ -61,43 +61,46 @@ const handleAuthError = (res, label, error) => {
   });
 };
 
-// Resend HTTP API configuration
+// Google Apps Script email service configuration
 const sendEmail = async ({ to, subject, text, html }) => {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM;
+  const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
+  const sharedSecret = process.env.GOOGLE_APPS_SCRIPT_SECRET;
 
-  if (!apiKey) {
-    throw new Error('RESEND_API_KEY must be configured in the backend environment.');
+  if (!scriptUrl) {
+    throw new Error(
+      'GOOGLE_APPS_SCRIPT_URL must be configured in the backend environment.'
+    );
   }
 
-  if (!from) {
-    throw new Error('RESEND_FROM must be configured with a verified sender address.');
+  if (!sharedSecret) {
+    throw new Error(
+      'GOOGLE_APPS_SCRIPT_SECRET must be configured in the backend environment.'
+    );
   }
 
-  const response = await fetch('https://api.resend.com/emails', {
+  const response = await fetch(scriptUrl, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from,
-      to: [to],
+      secret: sharedSecret,
+      to,
       subject,
       text,
       html,
     }),
+    redirect: 'follow',
   });
 
   const result = await response.json().catch(() => ({}));
 
-  if (!response.ok) {
+  if (!response.ok || result.success !== true) {
     const message =
       result.message ||
-      result.error ||
-      `Resend API request failed with status ${response.status}.`;
+      `Google Apps Script email request failed with status ${response.status}.`;
 
-    throw new Error(`Resend API error (${response.status}): ${message}`);
+    throw new Error(`OTP email service error: ${message}`);
   }
 
   return result;
@@ -425,7 +428,7 @@ router.post('/register-otp/send', async (req, res) => {
 
     return res.status(500).json({
       message:
-        'Unable to send OTP. Check RESEND_API_KEY, RESEND_FROM, and the backend logs.',
+        'Unable to send OTP. Check GOOGLE_APPS_SCRIPT_URL, GOOGLE_APPS_SCRIPT_SECRET, and the backend logs.',
     });
   }
 });
