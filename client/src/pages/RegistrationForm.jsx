@@ -30,6 +30,8 @@ const configurations = {
       ['designation', 'Employee Designation', 'text', 'Enter Designation'],
       ['email', 'Employee Email ID', 'email', 'Enter Email ID'],
       ['district', 'Company District', 'text', 'Enter Company District'],
+      ['password', 'Password', 'password', 'Enter password'],
+      ['confirmPassword', 'Confirm Password', 'password', 'Confirm password'],
     ],
   },
   college: {
